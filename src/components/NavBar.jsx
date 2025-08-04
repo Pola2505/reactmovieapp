@@ -16,7 +16,7 @@ export const NavBar = () => {
 return (
 
     <AppBar position="static">
-      <Container maxWidth="xl"sx={{ bgcolor: '#222831', color: '#DFD0B8', padding: 1 }} >
+      <Container maxWidth="xl"sx={{ bgcolor: '#222831', color: '#4ED8C7', padding: 1 }} >
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -80,7 +80,7 @@ return (
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#4ED8C7',
               textDecoration: 'none',
             }}
           >
@@ -90,7 +90,7 @@ return (
             {pages.map((page) => (
               <Button
                 key={page}
-                sx={{ my: 2, color: '#948979', display: 'block', '&:hover': {backgroundColor: '#393E46', color: '#DFD0B8',
+                sx={{ my: 2, color: '#4ED8C7', display: 'block', '&:hover': {backgroundColor: '#393E46', color: '#DFD0B8',
     } }}
               >
                 {page}
