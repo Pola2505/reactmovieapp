@@ -1,8 +1,7 @@
+import Router from './routes/Router';
 
-import { NavBar } from './components/NavBar'
-import { Footer } from './components/Footer'
-
-import { Box } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline';
+import { Box } from '@mui/material';
 
 function App() {
   return (
@@ -11,10 +10,14 @@ function App() {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        backgroundColor: '#393E46',
+        color: 'white',
+        fontFamily: 'Roboto, sans-serif',
       }}
     >
-        <NavBar/>
-        <Footer />
+        <CssBaseline />
+        <Router />
+
     </Box>
     
   )
