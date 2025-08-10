@@ -10,35 +10,37 @@ export default function Home() {
   const topRated   = useMovies({ type: 'top_rated', page: 1 });
 
   return (
-    <Container maxWidth="xl" sx={{ py: 2 }}>
+    <Container maxWidth="xl" sx={{ py: 1 }}>
       <HeroCarousel data={nowPlaying.data} loading={nowPlaying.loading} />
 
       
       <Box
         sx={{
           display: 'flex',
-          gap: 10,                 
+          gap: 10,    
+          justifyContent: 'center',             
           alignItems: 'stretch', 
           mt: 6,
-          mx: {xs: '0', md: '2', lg: '10'}, 
           mb: 6, 
           flexWrap: 'wrap',
-          flexDirection: { xs: 'column', md: 'row' }
+          flexDirection: { xs: 'column', md: 'row' }, 
         }}
       >
         <MovieSection
           title="Películas Populares"
           data={popular.data}
           loading={popular.loading}
-          sx={{ flex: 1, width: {xs: '100%', md: '300px', lg: '200px'}}}      
+          sx={{ flexBasis: { xs: '100%', md: 300, lg: 500}, backgroundColor: '#222831', color: 'white'}}     
         />
         <MovieSection
           title="Películas Mejor Puntadas"
           data={topRated.data}
           loading={topRated.loading}
-          sx={{ flex: 1, width: {xs: '100%', md: '300px', lg: '200px'}}}    
+          sx={{ flexBasis: { xs: '100%', md: 300, lg: 500 }, backgroundColor: '#222831', color: 'white'}}   
         />
       </Box>
     </Container>
   );
 }
+
+

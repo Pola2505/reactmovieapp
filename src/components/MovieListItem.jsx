@@ -24,26 +24,31 @@ export default function MovieListItem({ movie }) {
             edge="end"
             onClick={handleOpenDetail}
             aria-label="ver detalles"
+            sx={{ color: 'white' }}
           >
             <ChevronRightIcon />
           </IconButton>
         </Tooltip>
       }
-      sx={{ py: 0.5 }}
+      sx={{
+        py: 0.5,
+        '&.MuiListItem-divider': {
+          borderBottomColor: '#393E46', 
+        }
+      }}
     >
-    
+
       <ListItemButton onClick={handleOpenDetail} sx={{ py: 0.5 }}>
         <ListItemAvatar>
           <Avatar
             variant="rounded"
             src={imgThumb(movie.poster_path || movie.backdrop_path)}
             alt={movie.title}
-            sx={{ width: 40, height: 56, mr: 1 }}
+            sx={{ width: 40, height: 56, mr: 1, borderRadius: '5px' }}
           />
         </ListItemAvatar>
         <ListItemText
           primary={movie.title}
-          primaryTypographyProps={{ noWrap: true }}
         />
       </ListItemButton>
     </ListItem>

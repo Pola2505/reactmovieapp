@@ -23,10 +23,10 @@ export default function MovieSection({ title, data, loading, sx }) {
       <List
         dense
         disablePadding
-        sx={{ flex: 1, overflowY: 'auto', scrollbarGutter: 'stable both-edges', pr: 1 }}
+        sx={{ flex: 1, overflowY: 'auto', scrollbarGutter: 'stable both-edges', pr: 1}}
       >
         {items.slice(0, 12).map((m) => (
-          <MovieListItem key={m.id} movie={m} />
+          <MovieListItem key={m.id} movie={m}/>
         ))}
       </List>
     </Paper>

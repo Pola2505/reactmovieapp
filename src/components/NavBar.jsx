@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 
 import { useNavigate, useLocation } from 'react-router';
 import { useState } from 'react';
@@ -38,9 +38,9 @@ export const NavBar = () => {
   return (
 
     <AppBar position="static">
-      <Container maxWidth="xl" sx={{ bgcolor: '#222831', color: '#4ED8C7', padding: 1 }} >
+      <Container maxWidth="xl" sx={{ bgcolor: '#222831', color: '#1976D2', padding: 1 }} >
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <LocalMoviesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -56,7 +56,7 @@ export const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Film World
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -101,7 +101,7 @@ export const NavBar = () => {
             </Menu>
           </Box>
 
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <LocalMoviesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -114,11 +114,11 @@ export const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: '#4ED8C7',
+              color: '#1976D2',
               textDecoration: 'none',
             }}
           >
-            LOGO
+          Film World
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => {
@@ -130,12 +130,9 @@ export const NavBar = () => {
                   onClick={() => navigate(page.path)}
                   sx={{
                     my: 2,
-                    color: isActive ? '#DFD0B8' : '#4ED8C7',
-                    backgroundColor: isActive ? '#393E46' : 'transparent',
+                    color: isActive ? '#fff' : '#fff',
+                    backgroundColor: isActive ? '#1976D2' : 'transparent',
                     display: 'block',
-                    '&:hover': {
-                      color: '#DFD0B8',
-                    },
                   }}
                 >
                   {page.label}
