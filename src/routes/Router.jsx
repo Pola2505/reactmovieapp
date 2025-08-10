@@ -5,7 +5,7 @@ import { Footer } from "../components/Footer";
 import Home from "../pages/Home";
 import NewMovies from "../pages/NewMovies";
 import Popular from "../pages/Popular";
-import { Search } from "../pages/Search";
+import Search from "../pages/Search";
 import MovieDetail from "../pages/MovieDetail";
 
 const Layout = () => {

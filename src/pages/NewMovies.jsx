@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import { Link as RouterLink } from 'react-router'; 
 import {
   Box, Container, Grid, Card, CardActionArea, CardMedia,
-  CardContent, Typography, Button, Skeleton, Pagination, Stack
+  CardContent, Typography, Button, Skeleton, Pagination
 } from '@mui/material';
 import { useMovies } from '../hooks/useMovies';
 
