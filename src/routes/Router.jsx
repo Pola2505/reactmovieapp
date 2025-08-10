@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 import Home from "../pages/Home";
-import  NewMovies  from "../pages/NewMovies";
-import { Popular } from "../pages/Popular";
+import NewMovies from "../pages/NewMovies";
+import Popular from "../pages/Popular";
 import { Search } from "../pages/Search";
 import MovieDetail from "../pages/MovieDetail";
 
