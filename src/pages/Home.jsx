@@ -18,7 +18,7 @@ export default function Home() {
         sx={{
           display: 'flex',
           gap: 10,    
-          justifyContent: 'center',             
+          justifyContent: 'space-around',             
           alignItems: 'stretch', 
           mt: 6,
           mb: 6, 

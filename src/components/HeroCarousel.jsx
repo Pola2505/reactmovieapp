@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 
 const imgBackdrop = (path) => `https://image.tmdb.org/t/p/original/${path}`;
-const truncate = (str, n=180) => (str?.length > n ? str.slice(0, n) + '…' : str);
+const truncate = (str, n = 180) => (str?.length > n ? str.slice(0, n) + '…' : str);
 
 export default function HeroCarousel({ data, loading }) {
   if (loading) {
@@ -19,7 +19,15 @@ export default function HeroCarousel({ data, loading }) {
   if (!items.length) return null;
 
   return (
-    <Box sx={{ borderRadius: 2, overflow: 'hidden', mb: 3 }}>
+    <Box sx={{
+      borderRadius: 2, overflow: 'hidden', mb: 3,
+      '--swiper-theme-color': '#40C1AD',
+      '--swiper-navigation-color': '#40C1AD',
+      '--swiper-pagination-color': '#40C1AD',
+      '& .swiper-pagination-bullet-active': {
+          backgroundColor: '#40C1AD',
+        },
+    }}>
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -69,7 +77,7 @@ export default function HeroCarousel({ data, loading }) {
                   size="large"
                   component={RouterLink}
                   to={`/movie/${m.id}`}
-                  sx={{ mt: 2, borderRadius: 2 }}
+                  sx={{ mt: 2, borderRadius: 2, background: '#40C1AD'}}
                 >
                   Ver detalles
                 </Button>

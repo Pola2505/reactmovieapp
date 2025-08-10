@@ -38,7 +38,7 @@ export const NavBar = () => {
   return (
 
     <AppBar position="static">
-      <Container maxWidth="xl" sx={{ bgcolor: '#222831', color: '#1976D2', padding: 1 }} >
+      <Container maxWidth="xl" sx={{ bgcolor: '#222831', color: '#40C1AD', padding: 1 }} >
         <Toolbar disableGutters>
           <LocalMoviesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -114,7 +114,7 @@ export const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: '#1976D2',
+              color: '#40C1AD',
               textDecoration: 'none',
             }}
           >
@@ -130,8 +130,8 @@ export const NavBar = () => {
                   onClick={() => navigate(page.path)}
                   sx={{
                     my: 2,
-                    color: isActive ? '#fff' : '#fff',
-                    backgroundColor: isActive ? '#1976D2' : 'transparent',
+                    color: isActive ? '#fff' : '#40C1AD',
+                    backgroundColor: isActive ? '#40C1AD' : 'transparent',
                     display: 'block',
                   }}
                 >

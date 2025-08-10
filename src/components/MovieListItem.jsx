@@ -24,7 +24,7 @@ export default function MovieListItem({ movie }) {
             edge="end"
             onClick={handleOpenDetail}
             aria-label="ver detalles"
-            sx={{ color: 'white' }}
+            sx={{ color: '#40C1AD' }}
           >
             <ChevronRightIcon />
           </IconButton>
