@@ -6,7 +6,7 @@ export default function MovieSection({ title, data, loading, sx }) {
   if (loading) {
     return (
       <Paper elevation={2} sx={{ p: 2, width: 1, height: '100%', ...sx }}>
-        <Typography variant="h6" sx={{ mb: 2 }}>{title}</Typography>
+        <Typography variant="h6" sx={{ mb: 2}}>{title}</Typography>
         <List dense>
           {Array.from({ length: 8 }).map((_, i) => (
             <Skeleton key={i} variant="rectangular" height={56} sx={{ mb: 1, borderRadius: 1 }} />
