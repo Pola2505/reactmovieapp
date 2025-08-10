@@ -8,7 +8,7 @@ import {
 import { useMovies } from '../hooks/useMovies';
 
 const CARD_W = 220;
-const CARD_H = 360;
+const CARD_H = 320;
 
 const getPosterImg = (p) => (p ? `https://image.tmdb.org/t/p/w500/${p}` : '');
 const truncateTitle = (str, n = 20) => (str?.length > n ? str.slice(0, n) + '…' : str);
@@ -49,6 +49,7 @@ export default function NewMovies() {
                 borderRadius: 2,
                 display: 'flex',
                 flexDirection: 'column',
+                bgcolor: '#222831'
               }}
             >
               {loading ? (
@@ -76,7 +77,7 @@ export default function NewMovies() {
                     />
                   </CardActionArea>
 
-                  <CardContent sx={{ pt: 1.25, pb: 0, px: 2 }}>
+                  <CardContent sx={{ pt: 1.25, pb: 0, px: 2, bgcolor:'#222831' }}>
                     <Typography
                       variant="subtitle1"
                       fontWeight={700}
@@ -87,19 +88,20 @@ export default function NewMovies() {
                         textOverflow: 'ellipsis',
                         textAlign: 'center',
                         minHeight: 24,
+                        color: 'white'
                       }}
                     >
                       {truncateTitle(m.title, 20)}
                     </Typography>
                   </CardContent>
 
-                  <Box sx={{ mt: 'auto', p: 1.5, pt: 0, display: 'flex', justifyContent: 'center' }}>
+                  <Box sx={{ mt: 'auto', p: 1.5, pt: 0, display: 'flex', justifyContent: 'center', bgcolor: '#222831' }}>
                     <Button
                       size="small"
                       variant="contained"
                       component={RouterLink}
                       to={`/movie/${m.id}`}
-                      sx={{ borderRadius: 2 }}
+                      sx={{ borderRadius: 2, backgroundColor:'#40C1AD' }}
                     >
                       Ver detalles
                     </Button>
