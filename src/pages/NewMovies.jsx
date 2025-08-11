@@ -24,8 +24,8 @@ export default function NewMovies() {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Typography variant="h4" fontWeight={800} sx={{ mb: 3, textAlign: 'center' }}>
-        Últimos lanzamientos
+      <Typography variant="h4" fontWeight={800} sx={{ mb: 6, mt: 2, textAlign: 'center', letterSpacing:'1px' }}>
+        Últimos  lanzamientos
       </Typography>
 
       {error && (
