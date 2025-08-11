@@ -8,7 +8,7 @@ import {
 import { useMovies } from '../hooks/useMovies';
 
 const CARD_W = 220;
-const CARD_H = 360;
+const CARD_H = 320;
 
 const getPosterImg = (p) => (p ? `https://image.tmdb.org/t/p/w500/${p}` : '');
 const truncateTitle = (str, n = 20) => (str?.length > n ? str.slice(0, n) + '…' : str);
@@ -24,7 +24,7 @@ export default function Popular() {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Typography variant="h4" fontWeight={800} sx={{ mb: 3, textAlign: 'center' }}>
+      <Typography variant="h4" fontWeight={800} sx={{ mb: 6, mt: 2, textAlign: 'center' }}>
         Populares
       </Typography>
 
@@ -49,6 +49,7 @@ export default function Popular() {
                 borderRadius: 2,
                 display: 'flex',
                 flexDirection: 'column',
+                bgcolor: '#222831'
               }}
             >
               {loading ? (
@@ -87,6 +88,7 @@ export default function Popular() {
                         textOverflow: 'ellipsis',
                         textAlign: 'center',
                         minHeight: 24,
+                        color: 'white'
                       }}
                     >
                       {truncateTitle(m.title, 20)}
@@ -99,7 +101,7 @@ export default function Popular() {
                       variant="contained"
                       component={RouterLink}
                       to={`/movie/${m.id}`}
-                      sx={{ borderRadius: 2 }}
+                      sx={{ borderRadius: 2, backgroundColor:'#40C1AD'}}
                     >
                       Ver detalles
                     </Button>
