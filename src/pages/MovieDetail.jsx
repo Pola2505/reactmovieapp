@@ -193,7 +193,7 @@ export default function MovieDetail() {
                   }}
                 >
                   {movie.genres.map(g => (
-                    <Chip key={g.id} label={g.name} size="small" />
+                    <Chip key={g.id} label={g.name} size="small" sx={{ color: '#222831', bgcolor: '#40C1AD' }} />
                   ))}
                 </Box>
               )}
