@@ -16,6 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useMovies } from "../hooks/useMovies";
+import FavoriteButton from "../components/FavoriteButton";
 
 const CARD_W = 220;
 const CARD_H = 320;
@@ -27,10 +28,10 @@ const truncateTitle = (str, n = 20) =>
 
 export default function SearchMovies() {
   const [page, setPage] = useState(1);
-  const [input, setInput] = useState("");   
-  const [query, setQuery] = useState("");   
+  const [input, setInput] = useState("");
+  const [query, setQuery] = useState("");
 
- 
+
   const { data, loading, error } = useMovies({
     type: query ? "search" : null,
     query,
@@ -43,7 +44,7 @@ export default function SearchMovies() {
     [data]
   );
 
-  
+
   useEffect(() => {
     setPage(1);
   }, [query]);
@@ -63,7 +64,7 @@ export default function SearchMovies() {
         Buscar películas
       </Typography>
 
-    
+
       <Box
         component="form"
         onSubmit={onSubmit}
@@ -79,19 +80,19 @@ export default function SearchMovies() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Escribe el nombre de la película…"
           size="medium"
-          sx={{ width: { xs: "100%", sm: 520 }}}
+          sx={{ width: { xs: "100%", sm: 520 } }}
         />
         <Button
           variant="contained"
           size="large"
           onClick={onSubmit}
-          sx={{ display: { xs: "none", sm: "inline-flex" }, borderRadius: 2, backgroundColor: '#40C1AD'}}
+          sx={{ display: { xs: "none", sm: "inline-flex" }, borderRadius: 2, backgroundColor: '#40C1AD' }}
         >
           Buscar
         </Button>
       </Box>
 
-     
+
       {!query && (
         <Typography sx={{ textAlign: "center", color: "text.secondary", mb: 4 }}>
           Escribe algo y presiona <strong>Enter</strong> para buscar.
@@ -103,103 +104,106 @@ export default function SearchMovies() {
         </Box>
       )}
 
-     
+
       <Grid container spacing={3} justifyContent="center" alignItems="stretch">
         {loading && query
           ? Array.from({ length: 12 }).map((_, i) => (
-              <Grid key={i} item xs="auto">
-                <Card
-                  sx={{
-                    width: CARD_W,
-                    height: CARD_H,
-                    borderRadius: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    
-                  }}
-                >
+            <Grid key={i} item xs="auto">
+              <Card
+                sx={{
+                  width: CARD_W,
+                  height: CARD_H,
+                  borderRadius: 2,
+                  display: "flex",
+                  flexDirection: "column",
+
+                }}
+              >
+                <Skeleton
+                  variant="rectangular"
+                  height={220}
+                  sx={{ borderRadius: "8px 8px 0 0" }}
+                />
+                <Skeleton variant="text" sx={{ mx: 2, mt: 1 }} />
+                <Box sx={{ mt: "auto", p: 1.5, pt: 0 }}>
                   <Skeleton
                     variant="rectangular"
-                    height={220}
-                    sx={{ borderRadius: "8px 8px 0 0" }}
+                    height={32}
+                    sx={{ borderRadius: 2 }}
                   />
-                  <Skeleton variant="text" sx={{ mx: 2, mt: 1 }} />
-                  <Box sx={{ mt: "auto", p: 1.5, pt: 0 }}>
-                    <Skeleton
-                      variant="rectangular"
-                      height={32}
-                      sx={{ borderRadius: 2 }}
-                    />
-                  </Box>
-                </Card>
-              </Grid>
-            ))
+                </Box>
+              </Card>
+            </Grid>
+          ))
           : items.map((m) => (
-              <Grid key={m.id} item xs="auto">
-                <Card
-                  sx={{
-                    width: CARD_W,
-                    height: CARD_H,
-                    borderRadius: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    bgcolor: '#222831', 
-                  }}
-                >
-                  <CardActionArea component={RouterLink} to={`/movie/${m.id}`}>
-                    <CardMedia
-                      component="img"
-                      image={getPosterImg(m.poster_path || m.backdrop_path)}
-                      alt={m.title}
-                      height="220"
-                      loading="lazy"
-                      sx={{ objectFit: "cover" }}
-                    />
-                  </CardActionArea>
+            <Grid key={m.id} item xs="auto">
+              <Card
+                sx={{
+                  width: CARD_W,
+                  height: CARD_H,
+                  borderRadius: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  bgcolor: '#222831',
+                }}
+              >
+                <CardActionArea component={RouterLink} to={`/movie/${m.id}`}>
+                  <CardMedia
+                    component="img"
+                    image={getPosterImg(m.poster_path || m.backdrop_path)}
+                    alt={m.title}
+                    height="220"
+                    loading="lazy"
+                    sx={{ objectFit: "cover" }}
+                  />
+                  <Box sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2 }}>
+                    <FavoriteButton movie={m} size="small" />
+                  </Box>
+                </CardActionArea>
 
-                  <CardContent sx={{ pt: 1.25, pb: 0, px: 2 }}>
-                    <Typography
-                      variant="subtitle1"
-                      fontWeight={700}
-                      title={m.title}
-                      sx={{
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        textAlign: "center",
-                        minHeight: 24,
-                        color: 'white'
-                      }}
-                    >
-                      {truncateTitle(m.title, 20)}
-                    </Typography>
-                  </CardContent>
-
-                  <Box
+                <CardContent sx={{ pt: 1.25, pb: 0, px: 2 }}>
+                  <Typography
+                    variant="subtitle1"
+                    fontWeight={700}
+                    title={m.title}
                     sx={{
-                      mt: "auto",
-                      p: 1.5,
-                      pt: 0,
-                      display: "flex",
-                      justifyContent: "center",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      textAlign: "center",
+                      minHeight: 24,
+                      color: 'white'
                     }}
                   >
-                    <Button
-                      size="small"
-                      variant="contained"
-                      component={RouterLink}
-                      to={`/movie/${m.id}`}
-                      sx={{ borderRadius: 2, backgroundColor: '#40C1AD' }}
-                    >
-                      Ver detalles
-                    </Button>
-                  </Box>
-                </Card>
-              </Grid>
-            ))}
+                    {truncateTitle(m.title, 20)}
+                  </Typography>
+                </CardContent>
+
+                <Box
+                  sx={{
+                    mt: "auto",
+                    p: 1.5,
+                    pt: 0,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button
+                    size="small"
+                    variant="contained"
+                    component={RouterLink}
+                    to={`/movie/${m.id}`}
+                    sx={{ borderRadius: 2, backgroundColor: '#40C1AD' }}
+                  >
+                    Ver detalles
+                  </Button>
+                </Box>
+              </Card>
+            </Grid>
+          ))}
       </Grid>
 
-      
+
       {query && totalPages > 1 && (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 6, mb: 2 }}>
           <Pagination
@@ -211,22 +215,22 @@ export default function SearchMovies() {
             siblingCount={1}
             boundaryCount={1}
             sx={{
-            '& .MuiPaginationItem-root': {
-              color: 'white',
-            },
-            '& .MuiPaginationItem-root.Mui-selected': {
-              backgroundColor: '#40C1AD',
-              color: 'white',
-              '&:hover': {
-                backgroundColor: '#36a492',
+              '& .MuiPaginationItem-root': {
+                color: 'white',
               },
-            },
-          }}
+              '& .MuiPaginationItem-root.Mui-selected': {
+                backgroundColor: '#40C1AD',
+                color: 'white',
+                '&:hover': {
+                  backgroundColor: '#36a492',
+                },
+              },
+            }}
           />
         </Box>
       )}
 
-    
+
       {query && !loading && items.length === 0 && (
         <Typography sx={{ textAlign: "center", color: "text.secondary", mt: 4 }}>
           No se encontraron resultados para “{query}”.

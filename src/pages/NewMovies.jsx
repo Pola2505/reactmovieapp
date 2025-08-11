@@ -6,6 +6,7 @@ import {
   CardContent, Typography, Button, Skeleton, Pagination
 } from '@mui/material';
 import { useMovies } from '../hooks/useMovies';
+import FavoriteButton from "../components/FavoriteButton";
 
 const CARD_W = 220;
 const CARD_H = 320;
@@ -66,7 +67,7 @@ export default function NewMovies() {
                 </>
               ) : (
                 <>
-                  <CardActionArea component={RouterLink} to={`/movie/${m.id}`}>
+                  <CardActionArea component={RouterLink} to={`/movie/${m.id}`} sx={{ position: 'relative'}}>
                     <CardMedia
                       component="img"
                       image={getPosterImg(m.poster_path || m.backdrop_path)}
@@ -75,6 +76,9 @@ export default function NewMovies() {
                       loading="lazy"
                       sx={{ objectFit: 'cover' }}
                     />
+                    <Box sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2 }}>
+                      <FavoriteButton movie={m} size="small"/>
+                    </Box>
                   </CardActionArea>
 
                   <CardContent sx={{ pt: 1.25, pb: 0, px: 2, bgcolor: '#222831' }}>

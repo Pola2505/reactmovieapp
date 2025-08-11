@@ -1,11 +1,12 @@
 
 import { useState, useMemo } from 'react';
-import { Link as RouterLink } from 'react-router'; 
+import { Link as RouterLink } from 'react-router';
 import {
   Box, Container, Grid, Card, CardActionArea, CardMedia,
   CardContent, Typography, Button, Skeleton, Pagination, Stack
 } from '@mui/material';
 import { useMovies } from '../hooks/useMovies';
+import FavoriteButton from "../components/FavoriteButton";
 
 const CARD_W = 220;
 const CARD_H = 320;
@@ -37,15 +38,15 @@ export default function Popular() {
       <Grid
         container
         spacing={3}
-        justifyContent="center"   
+        justifyContent="center"
         alignItems="stretch"
       >
         {(loading ? Array.from({ length: 12 }) : items).map((m, i) => (
-          <Grid key={m?.id ?? i} item xs="auto">   
+          <Grid key={m?.id ?? i} item xs="auto">
             <Card
               sx={{
-                width: CARD_W,          
-                height: CARD_H,         
+                width: CARD_W,
+                height: CARD_H,
                 borderRadius: 2,
                 display: 'flex',
                 flexDirection: 'column',
@@ -75,6 +76,9 @@ export default function Popular() {
                       loading="lazy"
                       sx={{ objectFit: 'cover' }}
                     />
+                    <Box sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2 }}>
+                      <FavoriteButton movie={m} size="small" />
+                    </Box>
                   </CardActionArea>
 
                   <CardContent sx={{ pt: 1.25, pb: 0, px: 2 }}>
@@ -101,7 +105,7 @@ export default function Popular() {
                       variant="contained"
                       component={RouterLink}
                       to={`/movie/${m.id}`}
-                      sx={{ borderRadius: 2, backgroundColor:'#40C1AD'}}
+                      sx={{ borderRadius: 2, backgroundColor: '#40C1AD' }}
                     >
                       Ver detalles
                     </Button>

@@ -5,6 +5,8 @@ import {
 } from '@mui/material';
 import { useMovies } from '../hooks/useMovies';
 import TrailerDialog from '../components/TrailerDialog';
+import FavoriteButton from '../components/FavoriteButton';
+
 
 const imgBackdrop = (p) => (p ? `https://image.tmdb.org/t/p/original/${p}` : '');
 const getPosterImg = (p) => (p ? `https://image.tmdb.org/t/p/w500/${p}` : '');
@@ -41,7 +43,7 @@ export default function MovieDetail() {
         overflow: 'hidden',
       }}
     >
-     
+
       <Box
         sx={{
           position: 'absolute', inset: 0,
@@ -54,7 +56,7 @@ export default function MovieDetail() {
       />
 
       <Container maxWidth="xl" sx={{ position: 'relative', py: { xs: 3, md: 8 } }}>
-       
+
         <Box
           sx={{
             position: { xs: 'static', md: 'absolute' },
@@ -70,13 +72,13 @@ export default function MovieDetail() {
             variant="contained"
             onClick={() => setOpenTrailer(true)}
             disabled={!trailerKey}
-            sx={{ borderRadius: 2, backgroundColor: '#40C1AD', '&:hover': { backgroundColor: '#36a492' }}}
+            sx={{ borderRadius: 2, backgroundColor: '#40C1AD', '&:hover': { backgroundColor: '#36a492' } }}
           >
             Ver trailer
           </Button>
         </Box>
 
-      
+
         {loading ? (
           <Box
             sx={{
@@ -104,15 +106,15 @@ export default function MovieDetail() {
           <Box
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' }, 
+              flexDirection: { xs: 'column', md: 'row' },
               alignItems: { xs: 'center', md: 'flex-start' },
               justifyContent: 'center',
               gap: { xs: 2, sm: 3, md: 4 },
               minHeight: { md: '70vh' },
             }}
           >
-         
-            <Box sx={{ flex: { md: '0 0 auto' } }}>
+
+            <Box sx={{ flex: { md: '0 0 auto' }, position:'relative' }}>
               <Box
                 component="img"
                 src={getPosterImg(movie.poster_path)}
@@ -127,9 +129,12 @@ export default function MovieDetail() {
                   display: 'block',
                 }}
               />
+              <Box sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2 }}>
+                <FavoriteButton movie={movie} size="small" />
+              </Box>
             </Box>
 
-           
+
             <Box
               sx={{
                 flex: { md: '0 1 560px' },
@@ -214,6 +219,7 @@ export default function MovieDetail() {
               </Box>
             </Box>
           </Box>
+
         ) : null}
       </Container>
 

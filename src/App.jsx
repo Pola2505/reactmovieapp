@@ -2,9 +2,11 @@ import Router from './routes/Router';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box } from '@mui/material';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 function App() {
   return (
+    <FavoritesProvider>
     <Box
       sx={{
         display: 'flex',
@@ -19,6 +21,7 @@ function App() {
         <Router />
 
     </Box>
+    </FavoritesProvider>
     
   )
 }
