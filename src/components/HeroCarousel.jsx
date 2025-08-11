@@ -77,7 +77,7 @@ export default function HeroCarousel({ data, loading }) {
                   size="large"
                   component={RouterLink}
                   to={`/movie/${m.id}`}
-                  sx={{ mt: 2, borderRadius: 2, background: '#40C1AD'}}
+                  sx={{ mt: 2, borderRadius: 2, backgroundColor: '#40C1AD'}}
                 >
                   Ver detalles
                 </Button>

@@ -18,7 +18,7 @@ import {
 import { useMovies } from "../hooks/useMovies";
 
 const CARD_W = 220;
-const CARD_H = 360;
+const CARD_H = 320;
 
 const getPosterImg = (p) =>
   p ? `https://image.tmdb.org/t/p/w500/${p}` : "";
@@ -70,7 +70,7 @@ export default function SearchMovies() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          mb: 3,
+          mb: 6,
           gap: 1,
         }}
       >
@@ -79,13 +79,13 @@ export default function SearchMovies() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Escribe el nombre de la película…"
           size="medium"
-          sx={{ width: { xs: "100%", sm: 520 } }}
+          sx={{ width: { xs: "100%", sm: 520 }}}
         />
         <Button
           variant="contained"
           size="large"
           onClick={onSubmit}
-          sx={{ display: { xs: "none", sm: "inline-flex" }, borderRadius: 2 }}
+          sx={{ display: { xs: "none", sm: "inline-flex" }, borderRadius: 2, backgroundColor: '#40C1AD'}}
         >
           Buscar
         </Button>
@@ -115,6 +115,7 @@ export default function SearchMovies() {
                     borderRadius: 2,
                     display: "flex",
                     flexDirection: "column",
+                    
                   }}
                 >
                   <Skeleton
@@ -142,6 +143,7 @@ export default function SearchMovies() {
                     borderRadius: 2,
                     display: "flex",
                     flexDirection: "column",
+                    bgcolor: '#222831', 
                   }}
                 >
                   <CardActionArea component={RouterLink} to={`/movie/${m.id}`}>
@@ -166,6 +168,7 @@ export default function SearchMovies() {
                         textOverflow: "ellipsis",
                         textAlign: "center",
                         minHeight: 24,
+                        color: 'white'
                       }}
                     >
                       {truncateTitle(m.title, 20)}
@@ -186,7 +189,7 @@ export default function SearchMovies() {
                       variant="contained"
                       component={RouterLink}
                       to={`/movie/${m.id}`}
-                      sx={{ borderRadius: 2 }}
+                      sx={{ borderRadius: 2, backgroundColor: '#40C1AD' }}
                     >
                       Ver detalles
                     </Button>
@@ -198,15 +201,27 @@ export default function SearchMovies() {
 
       
       {query && totalPages > 1 && (
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 6, mb: 2 }}>
           <Pagination
             count={totalPages}
             page={page}
             onChange={(_e, v) => setPage(v)}
-            color="primary"
+            color="#40C1AD"
             shape="rounded"
             siblingCount={1}
             boundaryCount={1}
+            sx={{
+            '& .MuiPaginationItem-root': {
+              color: 'white',
+            },
+            '& .MuiPaginationItem-root.Mui-selected': {
+              backgroundColor: '#40C1AD',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: '#36a492',
+              },
+            },
+          }}
           />
         </Box>
       )}

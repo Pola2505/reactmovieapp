@@ -1,6 +1,6 @@
 
 import { useState, useMemo } from 'react';
-import { Link as RouterLink } from 'react-router'; 
+import { Link as RouterLink } from 'react-router';
 import {
   Box, Container, Grid, Card, CardActionArea, CardMedia,
   CardContent, Typography, Button, Skeleton, Pagination
@@ -24,7 +24,7 @@ export default function NewMovies() {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Typography variant="h4" fontWeight={800} sx={{ mb: 6, mt: 2, textAlign: 'center', letterSpacing:'1px' }}>
+      <Typography variant="h4" fontWeight={800} sx={{ mb: 6, mt: 2, textAlign: 'center', letterSpacing: '1px' }}>
         Últimos  lanzamientos
       </Typography>
 
@@ -37,15 +37,15 @@ export default function NewMovies() {
       <Grid
         container
         spacing={3}
-        justifyContent="center"   
+        justifyContent="center"
         alignItems="stretch"
       >
         {(loading ? Array.from({ length: 12 }) : items).map((m, i) => (
-          <Grid key={m?.id ?? i} item xs="auto">   
+          <Grid key={m?.id ?? i} item xs="auto">
             <Card
               sx={{
-                width: CARD_W,          
-                height: CARD_H,         
+                width: CARD_W,
+                height: CARD_H,
                 borderRadius: 2,
                 display: 'flex',
                 flexDirection: 'column',
@@ -77,7 +77,7 @@ export default function NewMovies() {
                     />
                   </CardActionArea>
 
-                  <CardContent sx={{ pt: 1.25, pb: 0, px: 2, bgcolor:'#222831' }}>
+                  <CardContent sx={{ pt: 1.25, pb: 0, px: 2, bgcolor: '#222831' }}>
                     <Typography
                       variant="subtitle1"
                       fontWeight={700}
@@ -101,7 +101,7 @@ export default function NewMovies() {
                       variant="contained"
                       component={RouterLink}
                       to={`/movie/${m.id}`}
-                      sx={{ borderRadius: 2, backgroundColor:'#40C1AD' }}
+                      sx={{ borderRadius: 2, backgroundColor: '#40C1AD' }}
                     >
                       Ver detalles
                     </Button>
@@ -113,15 +113,27 @@ export default function NewMovies() {
         ))}
       </Grid>
 
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6, mb: 2 }}>
         <Pagination
           count={totalPages}
           page={page}
           onChange={handlePageChange}
-          color="primary"
+          color="#40C1AD"
           shape="rounded"
           siblingCount={1}
           boundaryCount={1}
+          sx={{
+            '& .MuiPaginationItem-root': {
+              color: 'white',
+            },
+            '& .MuiPaginationItem-root.Mui-selected': {
+              backgroundColor: '#40C1AD',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: '#36a492',
+              },
+            },
+          }}
         />
       </Box>
     </Container>

@@ -113,15 +113,27 @@ export default function Popular() {
         ))}
       </Grid>
 
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6, mb: 2 }}>
         <Pagination
           count={totalPages}
           page={page}
           onChange={handlePageChange}
-          color="primary"
+          color="#40C1AD"
           shape="rounded"
           siblingCount={1}
           boundaryCount={1}
+          sx={{
+            '& .MuiPaginationItem-root': {
+              color: 'white',
+            },
+            '& .MuiPaginationItem-root.Mui-selected': {
+              backgroundColor: '#40C1AD',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: '#36a492',
+              },
+            },
+          }}
         />
       </Box>
     </Container>
