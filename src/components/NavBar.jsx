@@ -45,7 +45,6 @@ export const NavBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -54,6 +53,7 @@ export const NavBar = () => {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              color: '#40C1AD'
             }}
           >
             Film World
@@ -106,7 +106,6 @@ export const NavBar = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -116,6 +115,7 @@ export const NavBar = () => {
               letterSpacing: '.3rem',
               color: '#1976D2',
               textDecoration: 'none',
+              color: '#40C1AD'
             }}
           >
           Film World

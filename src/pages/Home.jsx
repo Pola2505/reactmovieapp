@@ -23,7 +23,8 @@ export default function Home() {
           mt: 6,
           mb: 6, 
           flexWrap: 'wrap',
-          flexDirection: { xs: 'column', md: 'row' }, 
+          flexDirection: { xs: 'column', md: 'row' },
+         
         }}
       >
         <MovieSection
