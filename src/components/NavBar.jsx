@@ -114,7 +114,7 @@ export const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: '#40C1AD',
+              color: '#1976D2',
               textDecoration: 'none',
             }}
           >
@@ -129,8 +129,8 @@ export const NavBar = () => {
                   key={page.label}
                   onClick={() => navigate(page.path)}
                   sx={{
-                    my: 2,
-                    color: isActive ? '#fff' : '#40C1AD',
+                    my: 1,
+                    color: isActive ? '#222831' : '#fff',
                     backgroundColor: isActive ? '#40C1AD' : 'transparent',
                     display: 'block',
                   }}
